@@ -1,0 +1,20 @@
+{% extends 'app_cripto/base.html' %}
+
+{% block title %}
+  Search Results
+{% endblock %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    {% for coin in object_list %}
+        <ul>
+            <li><h2>Name: {{ coin.name }}</h2></li>
+            <li>Symbol: {{ coin.symbol }}</li>
+            <li>Price: {{ coin.price }} $</li>
+            <li>Percent change for 24h: {{ coin.percent_change_24h }} %</li>
+            <li>Volume: {{ coin.volume_24h }}</li>
+            <li>Volume change for 24h: {{ coin.volume_change_24h }} %</li>
+        </ul>
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'app_cripto/base.html' %}
+
+{% block title %}
+    Main paige
+{% endblock %}
+
+{% block content %}
+    <h1>Wellcome, {{ request.user.username }} to Cripto!</h1>
+    <a href="{% url 'cripto_list' %}">List of coins</a><br>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'fave_coins' %}">Fave coins</a><br>
+    {% endif %}
+    <a href="{% url 'cripto_news' %}">Cripto news</a>
+{% endblock %}

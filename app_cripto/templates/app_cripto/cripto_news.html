@@ -1,0 +1,29 @@
+{% extends 'app_cripto/base.html' %}
+
+{% block title %}
+    Cripto news
+{% endblock %}
+
+{% block content %}
+    <h1>Cripto news:</h1>
+    {% for article in all_articles.articles %}
+        <ul>
+            <li>
+                <h3>Title: {{ article.title }}</h3>
+                {% if  article.author %}
+                    Author: {{ article.author }}<br>
+                {% else %}
+                    Author: {{ article.source.name  }}<br>
+                {% endif %}
+                Description: {{ article.description }}<br>
+                Url: <a href={{ article.url }}>web-site</a><br>
+                 {% if  article.urlToImage %}
+                     <img src="{{ article.source.urlToImage }}" alt=""><br>
+                {% endif %}
+                Date of publish: {{ article.publishedAt }}<br>
+            </li>
+        </ul>
+
+    {% endfor %}
+
+{% endblock %}
