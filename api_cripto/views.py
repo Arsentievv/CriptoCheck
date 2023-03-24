@@ -36,7 +36,7 @@ class CriptoListApi(ListCreateAPIView):
         queryset = CriptoModel.objects.all()
         cripto_name = self.request.query_params.get('name')
         if cripto_name:
-            queryset = queryset.filter(name=cripto_name)
+            queryset = queryset.filter(symbol=cripto_name)
         return queryset
 
 
@@ -46,6 +46,7 @@ class CriptoDetail(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, Gene
 
     queryset = CriptoModel.objects.all()
     serializer_class = CriptoSerializer
+    lookup_field = 'slug'
 
     def get(self, request, *args, **kwargs):
 

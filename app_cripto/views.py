@@ -58,7 +58,7 @@ class CriptoListView(generic.ListView):
         coins = json_result['data']
         for coin in coins:
             CriptoModel.objects.get_or_create(
-                name=coin['name'], symbol=coin['symbol'],
+                name=coin['name'], symbol=coin['symbol'], slug=coin['symbol'],
                 )
             cert_coin = CriptoModel.objects.get(name=coin['name'])
             cert_coin.price = coin['quote']['USD']['price']

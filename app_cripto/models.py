@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
+
 
 class CriptoModel(models.Model):
 
@@ -11,6 +13,9 @@ class CriptoModel(models.Model):
     percent_change_24h = models.FloatField(default=0, verbose_name='Price change for 24 hours')
     volume_24h = models.FloatField(default=0, verbose_name='Selling volume for 24 hours')
     volume_change_24h = models.FloatField(default=0, verbose_name='Selling volume change for 24 hours')
+    slug = models.SlugField(default=None, max_length=10, unique=True, db_index=True, verbose_name='URL')
+
+
 
 
 class FavouriteCripto(models.Model):
